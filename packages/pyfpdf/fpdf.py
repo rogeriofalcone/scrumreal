@@ -34,7 +34,7 @@ FPDF_VERSION='1.54'
 FPDF_FONT_DIR=os.path.join(os.path.dirname(__file__),'font')
 fpdf_charwidths = {}
 
-class FPDF:
+class FPDF(object):
 #Private properties
 #~ page;               #current page number
 #~ n;                  #current object number

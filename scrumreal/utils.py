@@ -1,5 +1,24 @@
 from pyfpdf import FPDF
 
+class PostItReport(FPDF):
+    def __init__(self, *args, **kwargs):
+        self.postits = kwargs.pop('postits')
+        super(PostItReport, self).__init__(*args, **kwargs)
+        self.alias_nb_pages()
+        self.add_page()
+        self.set_font('Arial','B',16)
+        self.show_postits()
+
+    def show_postits(self):
+        for i,p in enumerate(self.postits):
+            self.text(40,10 + (i * 20), str(p))
+
+    def footer(self):
+        self.set_y(-15)
+        self.set_font('Arial','I',8)
+        self.cell(0,10,'Page '+str(self.page_no())+'/{nb}',0,0,'C')
+
+
 class PostIt(object):
     def __init__(self, title, description, assignee = '', priority = 0, points  = 0):
         self.title = title
@@ -28,11 +47,7 @@ class PostIt(object):
 
     @staticmethod
     def make_pdf(postits):
-        pdf=FPDF()
-        pdf.add_page()
-        pdf.set_font('Arial','B',16)
-        for i,p in enumerate(postits):
-            pdf.cell(40,10 + (i * 20), str(p))
+        pdf=PostItReport(postits = postits)
         return pdf.output(dest='S')
 
     def __str__(self):
