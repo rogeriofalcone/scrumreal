@@ -2,32 +2,27 @@
 
 {% block extra_head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/postit.css') }}" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.tmpl.min.js') }}"  language="javascript"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/postit.js') }}"  language="javascript"></script>
 {% endblock %}
 
 
 {% block content %}
     
-    <form method="post" action="/postit">
-        <fieldset class="postit">
-            <label class="pblock">Title: <input class="title" type="text" value="" /></label>
-            <label class="pblock">Description: <textarea></textarea></label>
-            <label>Assignee:<input class="assignee" type="text" value="" /></label>
-            <label>Priority:<input class="priority" type="text" value="" /></label>
-            <label>Points:<input class="points" type="text" value="" /></label>
-            <div class="pbuttons">
-                <a href="#">add</a>
-            </div>
-        </fieldset>
-        <fieldset class="postit">
-            <label class="pblock">Title: <input class="title" type="text" value="" /></label>
-            <label class="pblock">Description: <textarea></textarea></label>
-            <label>Assignee:<input class="assignee" type="text" value="" /></label>
-            <label>Priority:<input class="priority" type="text" value="" /></label>
-            <label>Points:<input class="points" type="text" value="" /></label>
-            <div class="pbuttons">
-                <a href="#">add</a>
-                <a href="#">rem</a>
-            </div>
-        </fieldset>
+    <form method="get" action="/postit">
+        <div id="postit_group">
+            <fieldset class="postit">
+                <label class="pblock">Title: <input name="title0" class="title" type="text" value="" /></label>
+                <label class="pblock">Description: <textarea name="description0"></textarea></label>
+                <label>Assignee:<input name="assignee0" class="assignee" type="text" value="" /></label>
+                <label>Priority:<input name="priority0" class="priority" type="text" value="" /></label>
+                <label>Points:<input name="points0" class="points" type="text" value="" /></label>
+                <div class="pbuttons">
+                    <a class="add_postit" href="#">add</a>
+                </div>
+            </fieldset>
+        </div>
+        <input type="submit" value="imprimir"/>
     </form>
 {% endblock %}
