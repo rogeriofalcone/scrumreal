@@ -22,8 +22,9 @@
 
     <div id="menu">
         <ul id="nav">
-            <li><a href="/">post its</a></li>
-            <li><a href="/about">about</a></li>
+
+            <li><a {% if "index" == active_page %} class="menu_active" {% endif %} href="/">post its</a></li>
+            <li><a {% if "about" == active_page %} class="menu_active" {% endif %} href="/about">about</a></li>
         </ul><!--nav-->
     </div><!--menu-->
 

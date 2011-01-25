@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var postit_id = 0;
 
-    var markup = '<fieldset class="postit">';
+    var markup = '<fieldset class="postit" style="display:none;">';
     markup += '<label class="pblock">Title: <input name="title${id}" class="title" type="text" value="" /></label>';
     markup += '<label class="pblock">Description: <textarea name="description${id}"></textarea></label>';
     markup += '<label>Assignee:<input name="assignee${id}" class="assignee" type="text" value="" /></label>';
@@ -14,12 +14,16 @@ $(document).ready(function() {
 
     $('.add_postit').live("click", function () {
         postit_id += 1;
-        $.tmpl( "postit_template", {id: postit_id}).appendTo( "#postit_group" );
+        $.tmpl( "postit_template", {id: postit_id}).appendTo("#postit_group");
+        $("fieldset:hidden:last").fadeIn(300);
         return false;
     });
 
     $('.rem_postit').live("click", function () {
-        $(this).parent().parent().remove();
+        var postit = $(this).parent().parent()
+        postit.fadeOut(300, function() {
+            $(this).remove();
+        });
         return false;
     });
  
