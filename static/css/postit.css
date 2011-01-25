@@ -1,0 +1,48 @@
+    
+.postit {
+    padding: 5px;
+    border:0;
+    float:left;
+    width:320px;
+    height:220px;
+    margin-left:80px;
+    background-color:#FFFF90;
+}
+
+.postit .pblock {
+    display:block;
+}
+
+.postit label {
+    font-weight: bold;
+}
+.postit input {
+    height:25px;
+}
+
+.postit textarea {
+    width:320px;
+    height:152px;
+    overflow: hidden;
+}
+.postit .title {
+    width:285px;
+} 
+.postit .assignee {
+    width:97px;
+} 
+.postit .priority {
+    width:30px;
+} 
+.postit .points {
+    width:30px;
+} 
+
+.postit input,textarea {
+    border:0;
+    background-color:#FFFF90;
+}
+
+.postit .pbuttons {
+    float:right;
+}

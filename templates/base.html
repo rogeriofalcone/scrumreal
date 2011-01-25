@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>ScrumReal - Scrum tools for real world!</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/design.css') }}" type="text/css" media="screen" />
+
+    {% block extra_head %}
+    {% endblock %}
+</head>
+<body> 
+<div id="general">
+    <div id="top">
+        <h1>ScrumReal</h1>
+        <p>Scrum tools for real world!</p>
+    </div><!--topo-->
+
+    <div id="menu">
+        <ul id="nav">
+            <li><a href="/">post its</a></li>
+            <li><a href="/about">about</a></li>
+        </ul><!--nav-->
+    </div><!--menu-->
+
+    <div id="content">
+    {% block content %}
+    {% endblock %}
+    </div><!--content-->
+
+    <div id="footer">
+        ScrumReal - Scrum tools for real world! - <a href="http://fabiocerqueira.wordpress.com">Fábio Cerqueira</a>
+    </div><!--footer-->
+</div><!--general-->
+</body>
+</html>

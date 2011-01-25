@@ -1,0 +1,4 @@
+*.py[oc]
+*.~
+appcfg.py
+dev_appserver.py

@@ -1,0 +1,52 @@
+body {
+    background-color:#fff;
+}
+#general {
+    margin:0 auto;
+    position: relative;
+    width:900px;
+}
+
+#top {
+    padding:30px 10px;
+    width:880px;
+    border-bottom:1px solid #333;
+}
+
+#menu {
+    width:900px;
+}
+#nav {
+    margin:0 auto;
+    position: relative;
+    width:400px;
+}
+
+#nav li {
+    display: inline;
+}
+
+#nav li a {
+    color:#333;
+    border-left:1px solid #333;
+    border-right:1px solid #333;
+    border-bottom:1px solid #333;
+    font-size:1.3em;
+    height: 35px;
+    line-height: 35px;
+    padding:8px 70px;
+}
+
+#nav li a:hover {
+    border-top:1px solid #fff;
+}
+
+#content {
+    margin-top:20px;
+    min-height:480px;
+}
+
+#footer {
+    text-align:center;
+    clear:both;
+}
