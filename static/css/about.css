@@ -1,3 +1,35 @@
 div#content p {
     padding:10px;
 }
+
+#social {
+    margin-left: 5px;
+}
+
+#social li a {
+    width: 24px;
+    height: 24px;
+    text-indent:-9000px;
+    overflow:hidden;
+    float:left;
+}
+
+#twitter {
+   background: url('../img/twitter.png') no-repeat center center;
+}
+
+#wordpress {
+   background: url('../img/wordpress.png') no-repeat center center;
+}
+
+#facebook {
+   background: url('../img/facebook.png') no-repeat center center;
+}
+
+#linkedin {
+   background: url('../img/linkedin.png') no-repeat center center;
+}
+
+#delicious {
+   background: url('../img/delicious.png') no-repeat center center;
+}

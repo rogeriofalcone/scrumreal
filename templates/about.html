@@ -4,9 +4,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" type="text/css" media="screen" />
 {% endblock %}
 
-
-
 {% block content %}
+
+<h3>about site</h3>
  <p>This site is a demo with some tools for you to use during the implementation of Scrum. 
     Unlike other online tools for Scrum, the goal is merely to facilitate the generation of
     postits with tasks, burndown charts, planning poker.
@@ -17,4 +17,13 @@ The initial idea was to learn to use the <a href="http://flask.pocoo.org/">Flask
 to motivate studies. The site is based on an original idea of <a href="http://larces.uece.br/~rudy/">Rudy Matela</a>. 
  He made <a href="http://ether.larces.uece.br/postit/">similar tool</a> using TeX
 </p>
+<h3>about me</h3>
+<p>I'm Fábio Cerqueira, living at Fortaleza-CE(Brazil), more information about me see my profiles in social networks</p>
+<ul id="social">
+    <li><a id="twitter" href="http://twitter.com/fabiocerqueira">twitter</a></li>
+    <li><a id="wordpress" href="http://fabiocerqueira.wordpress.com">wordpress</a></li>
+    <li><a id="facebook" href="http://www.facebook.com/profile.php?id=544604073">facebook</a></li>
+    <li><a id="linkedin" href="http://br.linkedin.com/pub/f%C3%A1bio-cerqueira/23/a22/982">linked in</a></li>
+    <li><a id="delicious" href="http://delicious.com/fabiocerqueira">delicious</a></li>
+</ul>
 {% endblock %}
