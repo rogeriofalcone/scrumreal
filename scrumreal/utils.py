@@ -10,7 +10,6 @@ class PostItReport(FPDF):
         self.show_postits()
 
     def show_postits(self):
-        #FIXME problema de encoding
         #FIXME maxlength nos texto
         per_line = 2
         per_page = 6

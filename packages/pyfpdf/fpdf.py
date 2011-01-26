@@ -960,7 +960,7 @@ class FPDF(object):
             self._out('endobj')
             #Page content
             if self.compress:
-                p = zlib.compress(self.pages[n])
+                p = zlib.compress(self.pages[n].encode("latin1"))
             else:
                 p = self.pages[n]
             self._newobj()
