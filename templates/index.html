@@ -14,6 +14,15 @@
     
     <form method="post" action="/postit">
         <div id="postit_group">
+
+            <fieldset id="options"> 
+                <label for="ref">Post-it Reference</label>
+                <select id="ref" name="ref">
+                    <option value="7644">68mm x 74mm</option>
+                    <option value="7640">102mm x 74mm</option>
+                </select>
+                <input id="print" type="submit" value="print"/>
+            </fieldset> 
             <fieldset class="postit">
                 <label class="pblock">Title: <input name="title0" class="title" type="text" value="" /></label>
                 <label class="pblock">Description: <textarea name="description0"></textarea></label>
@@ -25,6 +34,5 @@
                 </div>
             </fieldset>
         </div>
-        <input id="print" type="submit" value="print"/>
     </form>
 {% endblock %}

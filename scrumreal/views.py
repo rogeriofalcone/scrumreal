@@ -13,7 +13,7 @@ def index():
 @app.route('/postit', methods=['POST'])
 def postit():
     postits = PostIt.load_post(request.form)
-    pdf_postits = PostIt.make_pdf(postits)
+    pdf_postits = PostIt.make_pdf(postits, ref=request.form['ref'])
     response = Response(response=pdf_postits, mimetype="application/pdf")
     response.headers['Content-Disposition'] = 'filename=postits.pdf'
     return response

@@ -3,8 +3,12 @@
 from pyfpdf import FPDF
 
 class PostItReport(FPDF):
+    REFS = {'7644':(68,74),
+           '7640':(102,74),}
+
     def __init__(self, *args, **kwargs):
         self.postits = kwargs.pop('postits')
+        self.ref = kwargs.pop('ref')
         super(PostItReport, self).__init__(*args, **kwargs)
         self.alias_nb_pages()
         self.show_postits()
@@ -17,7 +21,7 @@ class PostItReport(FPDF):
             if not i % 6:
                 self.add_page()
             c = i % per_page
-            w,h = 102,74
+            w,h = PostItReport.REFS.get(self.ref,(102,74))
             sep = (210 - 2 * w) / 3
             x = (c % per_line) * sep + sep +  ((c % per_line) * w)
             y = (c / per_line) * 10 + 10 + ((c / per_line) * h)
@@ -79,8 +83,8 @@ class PostIt(object):
         return postits
 
     @staticmethod
-    def make_pdf(postits):
-        pdf=PostItReport(postits = postits)
+    def make_pdf(postits, ref):
+        pdf=PostItReport(postits = postits, ref = ref)
         return pdf.output(dest='S')
 
     def __str__(self):
