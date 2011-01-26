@@ -6,7 +6,8 @@
     width:320px;
     height:220px;
     margin-left:80px;
-    margin-bottom:15px;
+    margin-bottom:30px;
+    margin-top:15px;
     background-color:#FFFF90;
 }
 
@@ -46,4 +47,16 @@
 
 .postit .pbuttons {
     float:right;
+    background-color:#FFFF90;
+    padding: 5px;
+}
+
+.postit .pbuttons a {
+    background-color:#FFFF90;
+    color: #000;
+    margin-right: 3px;
+}
+.postit .pbuttons a:hover {
+    background-color:#FFFF90;
+    color: #F1CA47;
 }
