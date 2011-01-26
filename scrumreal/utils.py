@@ -17,33 +17,35 @@ class PostItReport(FPDF):
             if not i % 6:
                 self.add_page()
             c = i % per_page
-            w,h = 102, 76 
-            x = (c % per_line) * 2 + 2 +  ((c % per_line) * w)
+            w,h = 102,74
+            sep = (210 - 2 * w) / 3
+            x = (c % per_line) * sep + sep +  ((c % per_line) * w)
             y = (c / per_line) * 10 + 10 + ((c / per_line) * h)
             #draw border
             self.rect(x,y,w,h)
             #draw title
             self.set_font('Arial','B',13)
             self.text(x+2,y+6, p.title)
-            self.set_font('Arial','',12)
+            self.set_font('Arial','',11)
             #draw line separator title content
             self.line(x,y+8,x+w,y+8)
             self.set_xy(x+2,y+10);
             self.multi_cell(98,5, p.description)
     
             #draw line separator content footer
-            self.line(x,y+h-10,x+w,y+h-10)
-            self.text(x + 1,y + h - 4, "assignee: %s" % p.assignee)
+            footer_y = 10
+            footer_text_y = (footer_y / 2.7)
+            self.line(x,y+h-footer_y,x+w,y+h-footer_y)
+            self.text(x + 1,y + h - footer_text_y, "as: %s" % p.assignee)
             #draw line separator assign priority
-            priority_x = 48
-            self.line(x + priority_x,y+h-10,x+priority_x,y+h)
-            self.text(x + priority_x + 1,y + h - 4, "priority: %s" % p.priority)
+            priority_x = (w / 2) 
+            self.line(x + priority_x,y+h-footer_y,x+priority_x,y+h)
+            self.text(x + priority_x + 1,y + h - footer_text_y, "pr: %s" % p.priority)
             #draw line separator priority point 
-            point_x = 78
-            self.line(x + point_x,y+h-10,x+point_x,y+h)
-            self.text(x + point_x + 1,y + h - 4, "points:")
-            if p.points:
-                self.text(x + point_x + 14,y + h - 4, str(p.points))
+            point_x = (w / 1.3) 
+            self.line(x + point_x,y+h-footer_y,x+point_x,y+h)
+            points = str(p.points) if p.points else ""
+            self.text(x + point_x + 1,y + h - footer_text_y, "pt: %s" % points)
 
     def footer(self):
         self.set_y(-15)
