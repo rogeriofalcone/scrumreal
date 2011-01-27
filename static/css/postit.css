@@ -1,4 +1,19 @@
-    
+ 
+#options {
+    padding: 10px;
+    margin-left: 70px;
+    border:0;
+}
+   
+#print {
+    padding: 2px 20px;
+    border: 1px solid #000;
+    color: #000;
+    background-color: #FFF;
+    cursor:pointer;
+    font-weight:bold
+}
+
 .postit {
     padding: 5px;
     border:0;
