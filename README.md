@@ -30,6 +30,6 @@ Execute o servidor de desenvolvimento do GAE
 
     /caminho/do/google_appengine/dev_appserver.py /caminho/do/scrumreal
 
-Geralmente eu crio um link simbólico do arquivo dev_appserver.py e appcfg.py na pasta do projeto
+Geralmente eu crio um link simbólico do arquivo `dev_appserver.py` e `appcfg.py` na pasta do projeto
     
     ./dev_appserver.py .
