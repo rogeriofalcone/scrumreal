@@ -9,6 +9,7 @@ class PostItReport(FPDF):
     def __init__(self, *args, **kwargs):
         self.postits = kwargs.pop('postits')
         self.ref = kwargs.pop('ref')
+        self.days = kwargs.pop('days')
         super(PostItReport, self).__init__(*args, **kwargs)
         self.alias_nb_pages()
         self.show_postits()
@@ -55,7 +56,7 @@ class PostItReport(FPDF):
     def show_burndown(self):
         w, h = 190, 273
         points = sum(p.points for p in self.postits)
-        days = 0 #TODO implementar entrada da quantidade de dias 
+        days = self.days
         if not (points and days):
             return
 
@@ -92,7 +93,7 @@ class PostItReport(FPDF):
         self.set_font('Arial','',8)
         for i in range(1, tics_x+1):
             y = 10 + (i * space)
-            self.text(5, y, str(i))
+            self.text(5, y+1, str(i))
             self.line(9, y, 11, y)
  
         self.line(195, 10,10, 280)
@@ -130,8 +131,8 @@ class PostIt(object):
         return postits
 
     @staticmethod
-    def make_pdf(postits, ref):
-        pdf=PostItReport(postits = postits, ref = ref)
+    def make_pdf(postits, ref, days):
+        pdf=PostItReport(postits = postits, ref = ref, days=days)
         return pdf.output(dest='S')
 
     def __str__(self):

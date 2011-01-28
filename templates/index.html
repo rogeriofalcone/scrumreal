@@ -4,8 +4,10 @@
 
 {% block extra_head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/postit.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ui-lightness/jquery-ui-1.8.9.custom.css') }}" type="text/css" media="screen" />
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.tmpl.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui-1.8.9.custom.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/postit.js') }}"></script>
 {% endblock %}
 
@@ -21,6 +23,12 @@
                     <option value="7644">68mm x 74mm</option>
                     <option value="7640">102mm x 74mm</option>
                 </select>
+
+                <label for="from">From</label>
+                <input type="text" id="from" name="from"/>
+                <label for="to">to</label>
+                <input type="text" id="to" name="to"/>
+
                 <input id="print" type="submit" value="print"/>
             </fieldset> 
             <fieldset class="postit">
