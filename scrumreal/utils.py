@@ -55,7 +55,7 @@ class PostItReport(FPDF):
     def show_burndown(self):
         w, h = 190, 273
         points = sum(p.points for p in self.postits)
-        days = 30 #TODO implementar entrada da quantidade de dias 
+        days = 0 #TODO implementar entrada da quantidade de dias 
         if not (points and days):
             return
 
