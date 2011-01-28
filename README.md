@@ -3,6 +3,8 @@
 Este é um projeto com objetivos didáticos que eu criei para estudar [Flask](http://flask.pocoo.org) e a integração com o
 Google App Engine([GAE](http://code.google.com/appengine/))
 
+[http://scrumreal.appspot.com](http://scrumreal.appspot.com)
+
 ### Por que usar?
 
 Basicamente o uso é motivado quando a equipe só tem homem da letra feia e que não escreve faz muito tempo, então como
