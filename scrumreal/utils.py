@@ -35,7 +35,7 @@ class PostItReport(FPDF):
             #draw line separator title content
             self.line(x,y+8,x+w,y+8)
             self.set_xy(x+2,y+10);
-            self.multi_cell(98,5, p.description)
+            self.multi_cell(w - 6,5, p.description)
     
             #draw line separator content footer
             footer_y = 10
