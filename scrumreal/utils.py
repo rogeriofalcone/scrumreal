@@ -11,6 +11,7 @@ class PostItReport(FPDF):
         self.ref = kwargs.pop('ref')
         super(PostItReport, self).__init__(*args, **kwargs)
         self.alias_nb_pages()
+        self.show_burndown()
         self.show_postits()
 
     def show_postits(self):
@@ -28,7 +29,7 @@ class PostItReport(FPDF):
             #draw border
             self.rect(x,y,w,h)
             #draw title
-            self.set_font('Arial','B',13)
+            self.set_font('Arial','B',11)
             self.text(x+2,y+6, p.title)
             self.set_font('Arial','',11)
             #draw line separator title content
@@ -50,6 +51,52 @@ class PostItReport(FPDF):
             self.line(x + point_x,y+h-footer_y,x+point_x,y+h)
             points = str(p.points) if p.points else ""
             self.text(x + point_x + 1,y + h - footer_text_y, "pt: %s" % points)
+
+    def show_burndown(self):
+        w, h = 190, 270
+        points = sum(p.points for p in self.postits)
+        days = 0
+        if not (points and days):
+            return
+
+        self.add_page()
+        self.set_font('Arial','',9)
+        self.set_line_width(0.6)  
+
+        self.line(10,10,10+w,10)
+        self.rotate(270, 15+w, 5)
+        self.text(15+w, 5, "Points")
+        self.rotate(0)
+
+        self.line(10,10,10,10+h)
+        self.rotate(270, 9, 13+h)
+        self.text(9, 13+h, "Days")
+        self.rotate(0)
+
+        # tics points
+        tics_y = points / 5.
+        space = 185 / tics_y 
+        self.set_line_width(0.1)  
+        self.set_font('Arial','',8)
+        for i in range(1, tics_y+1):
+            x = 10 + (i * space)
+            self.rotate(270, x - 1, 3)
+            self.text(x - 1, 3, str(i * 5))
+            self.rotate(0)
+            self.line(x, 9, x, 11)
+            
+        #tics days
+        tics_x = days
+        space = 270 / tics_x 
+        self.set_line_width(0.1)  
+        self.set_font('Arial','',8)
+        for i in range(1, tics_x+1):
+            y = 10 + (i * space)
+            self.text(5, y, str(i))
+            self.line(9, y, 11, y)
+ 
+        self.line(195, 10,10, 280)
+
 
     def footer(self):
         self.set_y(-15)
