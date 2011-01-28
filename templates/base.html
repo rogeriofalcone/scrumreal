@@ -9,13 +9,29 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/design.css') }}" type="text/css" media="screen" />
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.4.4.min.js') }}"></script>
-
+    <script type="text/javascript">
+        window.google_analytics_uacct = "UA-2419764-2";
+    </script>
     {% block extra_head %}
     {% endblock %}
 </head>
 <body> 
 <div id="general">
     <div id="top">
+        <div id="adsense">
+            <script type="text/javascript"><!--
+            google_ad_client = "pub-1732538519019222";
+            /* 728x15, criado 28/01/11 */
+            google_ad_slot = "1739604495";
+            google_ad_width = 728;
+            google_ad_height = 15;
+            //-->
+            </script>
+            <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+            </script>
+        </div><!--adsense-->
+
         <h1>ScrumReal</h1>
         <p>Scrum tools for real world!</p>
     </div><!--topo-->
