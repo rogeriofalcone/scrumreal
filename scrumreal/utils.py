@@ -11,8 +11,8 @@ class PostItReport(FPDF):
         self.ref = kwargs.pop('ref')
         super(PostItReport, self).__init__(*args, **kwargs)
         self.alias_nb_pages()
-        self.show_burndown()
         self.show_postits()
+        self.show_burndown()
 
     def show_postits(self):
         #FIXME maxlength nos texto
@@ -53,9 +53,9 @@ class PostItReport(FPDF):
             self.text(x + point_x + 1,y + h - footer_text_y, "pt: %s" % points)
 
     def show_burndown(self):
-        w, h = 190, 270
+        w, h = 190, 273
         points = sum(p.points for p in self.postits)
-        days = 0
+        days = 30 #TODO implementar entrada da quantidade de dias 
         if not (points and days):
             return
 
@@ -69,8 +69,8 @@ class PostItReport(FPDF):
         self.rotate(0)
 
         self.line(10,10,10,10+h)
-        self.rotate(270, 9, 13+h)
-        self.text(9, 13+h, "Days")
+        self.rotate(270, 9, 11+h)
+        self.text(9, 11+h, "Days")
         self.rotate(0)
 
         # tics points
