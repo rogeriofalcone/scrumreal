@@ -15,6 +15,11 @@ class PostItReport(FPDF):
         self.show_postits()
         self.show_burndown()
 
+    def text_rotate(self, x, y, angle, text):
+        self.rotate(angle, x, y)
+        self.text(x, y, text)
+        self.rotate(0)
+
     def show_postits(self):
         #FIXME maxlength nos texto
         per_line = 2
@@ -60,6 +65,7 @@ class PostItReport(FPDF):
             self.text(x + 1,y + h - footer_text_y + 5, p.assignee)
             self.text(x + point_x + 1,y + h - footer_text_y + 5, points)
 
+
     def show_burndown(self):
         w, h = 190, 273
         points = sum(p.points for p in self.postits)
@@ -81,16 +87,16 @@ class PostItReport(FPDF):
         self.text(9, 11+h, "Days")
         self.rotate(0)
 
-        # tics points
-        tics_y = points / 5.
-        space = 185 / tics_y 
         self.set_line_width(0.1)  
         self.set_font('Arial','',8)
+
+        # tics points
+        interval_y = 5.0
+        tics_y = points / interval_y
+        space = 185 / tics_y 
         for i in range(1, int(tics_y)+1):
             x = 10 + (i * space)
-            self.rotate(270, x - 1, 3)
-            self.text(x - 1, 3, str(i * 5))
-            self.rotate(0)
+            self.text_rotate(x - 1, 3, 270, str(i * int(interval_y)))
             self.line(x, 9, x, 11)
             
         #tics days
@@ -102,7 +108,7 @@ class PostItReport(FPDF):
             y = 10 + (i * space)
             self.text(5, y+1, str(i))
             self.line(9, y, 11, y)
- 
+
         self.line(195, 10,10, 280)
 
 
