@@ -15,6 +15,10 @@ handlers:
   static_files: static/robots.txt
   upload: static/robots.txt
 
+- url: /google591492db964c2235.html
+  static_files: static/google591492db964c2235.html
+  upload: static/google591492db964c2235.html
+
 - url: .*
   script: main.py
 
