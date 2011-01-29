@@ -97,7 +97,7 @@ class PostItReport(FPDF):
         space = 185 / tics_y 
         for i in range(1, int(tics_y)+1):
             x = 10 + (i * space)
-            self.text_rotate(x - 1, 3, 270, str(i * int(interval_y)))
+            self.text_rotate(x - 1, 3, 270, str(int(i * interval_y)))
             self.line(x, 9, x, 11)
             
         #tics days
