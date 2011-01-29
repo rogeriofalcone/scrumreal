@@ -30,28 +30,35 @@ class PostItReport(FPDF):
             #draw border
             self.rect(x,y,w,h)
             #draw title
-            self.set_font('Arial','B',11)
+            self.set_font('Arial','B',10)
             self.text(x+2,y+6, p.title)
-            self.set_font('Arial','',11)
+            self.set_font('Arial','',10)
             #draw line separator title content
-            self.line(x,y+8,x+w,y+8)
+            self.line(x+2,y+8,x+w-2,y+8)
             self.set_xy(x+2,y+10);
             self.multi_cell(w - 6,5, p.description)
     
             #draw line separator content footer
             footer_y = 10
-            footer_text_y = (footer_y / 2.7)
+            footer_text_y = (footer_y / 1.5)
             self.line(x,y+h-footer_y,x+w,y+h-footer_y)
-            self.text(x + 1,y + h - footer_text_y, "as: %s" % p.assignee)
+            self.set_font('Arial','B',10)
+            self.text(x + 1,y + h - footer_text_y, "assignee")
             #draw line separator assign priority
             priority_x = (w / 2) 
             self.line(x + priority_x,y+h-footer_y,x+priority_x,y+h)
-            self.text(x + priority_x + 1,y + h - footer_text_y, "pr: %s" % p.priority)
+            self.text(x + priority_x + 1,y + h - footer_text_y, "priority")
             #draw line separator priority point 
             point_x = (w / 1.3) 
             self.line(x + point_x,y+h-footer_y,x+point_x,y+h)
             points = str(p.points) if p.points else ""
-            self.text(x + point_x + 1,y + h - footer_text_y, "pt: %s" % points)
+            self.text(x + point_x + 1,y + h - footer_text_y, "points")
+
+            #dynamic data
+            self.set_font('Arial','',10)
+            self.text(x + priority_x + 1,y + h - footer_text_y + 5, p.priority)
+            self.text(x + 1,y + h - footer_text_y + 5, p.assignee)
+            self.text(x + point_x + 1,y + h - footer_text_y + 5, points)
 
     def show_burndown(self):
         w, h = 190, 273
@@ -79,7 +86,7 @@ class PostItReport(FPDF):
         space = 185 / tics_y 
         self.set_line_width(0.1)  
         self.set_font('Arial','',8)
-        for i in range(1, tics_y+1):
+        for i in range(1, int(tics_y)+1):
             x = 10 + (i * space)
             self.rotate(270, x - 1, 3)
             self.text(x - 1, 3, str(i * 5))
@@ -88,10 +95,10 @@ class PostItReport(FPDF):
             
         #tics days
         tics_x = days
-        space = 270 / tics_x 
+        space = 270. / tics_x 
         self.set_line_width(0.1)  
         self.set_font('Arial','',8)
-        for i in range(1, tics_x+1):
+        for i in range(1, int(tics_x)+1):
             y = 10 + (i * space)
             self.text(5, y+1, str(i))
             self.line(9, y, 11, y)
