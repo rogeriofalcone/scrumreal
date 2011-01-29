@@ -91,7 +91,8 @@ class PostItReport(FPDF):
         self.set_font('Arial','',8)
 
         # tics points
-        interval_y = 5.0
+        interval_y = points * 0.1 # interval 10% of points
+        interval_y = interval_y if interval_y > 1 else 1
         tics_y = points / interval_y
         space = 185 / tics_y 
         for i in range(1, int(tics_y)+1):
